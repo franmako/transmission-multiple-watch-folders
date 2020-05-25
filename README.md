@@ -1,5 +1,5 @@
 # WORK IN PROGRESS
-This is only theorical for the moment, the plan is to dockerize this little tool to be able to add as addon in a media docker stack
+This is only theorical for the moment, the plan is to dockerize this little tool to be able to add as addon in a media docker stack (and sync the watchfolders with a cloud storage for my personal example)
 
 
 #### Working with environment variables 
@@ -15,7 +15,10 @@ This is only theorical for the moment, the plan is to dockerize this little tool
 | RPC_CLIENT_PORT                      |               |       |
 | RPC_CLIENT_USER                      |               |       |
 | RPC_CLIENT_PASSWORD                  |               |       |
-####  
+####  Logs
+
+For now, the logs will come in this folder so feel free to make a volume. 
+It is not my priority, but best would be to access it via docker logs also 
 
 /opt/logs
 
