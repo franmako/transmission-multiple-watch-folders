@@ -7,20 +7,20 @@ import transmissionrpc
 import datetime
 
 # Watch directories
-watch_tv = ''
-watch_movie = ''
-watch_music = ''
+watch_tv = os.environ['RPC_WATCH_TV_FOLDER']
+watch_movie = os.environ['RPC_WATCH_MOVIES_FOLDER']
+watch_music = os.environ['RPC_WATCH_TV_FOLDER']
 
 # Complete download directories
-download_dir_tv = ''
-download_dir_movie = ''
-download_dir_music = ''
+download_dir_tv = os.environ['RPC_DOWNLOAD_TV_FOLDER']
+download_dir_movie = os.environ['RPC_DOWNLOAD_MOVIES_FOLDER']
+download_dir_music = os.environ['RPC_DOWNLOAD_MUSIC_FOLDER']
 
 client = transmissionrpc.Client(
-    address='127.0.0.1',
-    port='9091',
-    user='',
-    password=''
+    address=os.environ['RPC_CLIENT_HOST'],
+    port=os.environ['RPC_CLIENT_PORT'],
+    user=os.environ['RPC_CLIENT_USER'],
+    password=os.environ['RPC_CLIENT_PASSWORD']
     )
 
 # Logging
