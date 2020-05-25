@@ -1,6 +1,7 @@
 # WORK IN PROGRESS
 This is only theorical for the moment, the plan is to dockerize this little tool to be able to add as addon in a media docker stack
 
+
 #### Working with environment variables 
 | Variable                             | Use           | ....  |
 | -------------------------------------|:-------------:| -----:|
@@ -14,7 +15,9 @@ This is only theorical for the moment, the plan is to dockerize this little tool
 | RPC_CLIENT_PORT                      |               |       |
 | RPC_CLIENT_USER                      |               |       |
 | RPC_CLIENT_PASSWORD                  |               |       |
+####  
 
+/opt/logs
 
 ## Transmission Watch Folders
 A small Python script which provides a way to automate multiple watch directories when using `TransmissionDaemon`, a CLI version of the popular Transmission torrent client.
