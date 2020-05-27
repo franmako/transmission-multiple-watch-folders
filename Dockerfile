@@ -17,7 +17,7 @@ RUN apk update \
     && apk add py-pip \
     && pip install transmissionrpc \
     && rm -rf /var/lib/apt/lists/* 
-COPY . /app
+COPY ./app /app
 
 RUN mkdir -p {$RPC_WATCH_TV_FOLDER,$RPC_WATCH_MOVIES_FOLDER,$RPC_WATCH_MUSIC_FOLDER}
 
