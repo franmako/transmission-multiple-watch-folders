@@ -4,7 +4,8 @@ LABEL maintainer="dev@soflane.ovh"
 LABEL url="https://github.com/soflane"
 LABEL vcs-url="https://github.com/soflane"
 
-
+VOLUME /torrents
+VOLUME /opt/logs
 
 ENV RPC_WATCH_TV_FOLDER=/torrents/TV
 ENV RPC_WATCH_MOVIES_FOLDER=/torrents/Movies
@@ -16,11 +17,13 @@ RUN apk update \
     && apk add py-pip \
     && pip install transmissionrpc \
     && rm -rf /var/lib/apt/lists/* 
+
 COPY ./app /app
+COPY ./app /torrents
+
 
 RUN mkdir -p {$RPC_WATCH_TV_FOLDER,$RPC_WATCH_MOVIES_FOLDER,$RPC_WATCH_MUSIC_FOLDER}
-VOLUME /torrents
-VOLUME /opt/logs
+
 
 CMD python /app/main.py
 
