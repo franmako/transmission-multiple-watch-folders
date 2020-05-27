@@ -4,8 +4,7 @@ LABEL maintainer="dev@soflane.ovh"
 LABEL url="https://github.com/soflane"
 LABEL vcs-url="https://github.com/soflane"
 
-VOLUME /torrents
-VOLUME /opt/logs
+
 
 ENV RPC_WATCH_TV_FOLDER=/torrents/TV
 ENV RPC_WATCH_MOVIES_FOLDER=/torrents/Movies
@@ -20,6 +19,8 @@ RUN apk update \
 COPY ./app /app
 
 RUN mkdir -p {$RPC_WATCH_TV_FOLDER,$RPC_WATCH_MOVIES_FOLDER,$RPC_WATCH_MUSIC_FOLDER}
+VOLUME /torrents
+VOLUME /opt/logs
 
 CMD python /app/main.py
 
