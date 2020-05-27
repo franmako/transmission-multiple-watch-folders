@@ -24,7 +24,7 @@ client = transmissionrpc.Client(
     )
 
 # Logging
-log = open('./log.txt', 'a')
+log = open('/opt/logs/log.txt', 'a')
 timestamp = '[{:%Y-%m-%d %H:%M:%S}]'.format(datetime.datetime.now())
 print >> log, timestamp +  ' ' + 'Started watch script.'
 print >> log, 'Current watch directories:'
@@ -43,12 +43,14 @@ def add(watch_dir, download_dir):
     if files: # files exist in directory
         for file in files:
             if file.lower().endswith('.torrent') and not file.lower().startswith('.'):
-                log = open('./log.txt', 'a')
+                log = open('/opt/logs/log.txt', 'a')
                 timestamp = '[{:%Y-%m-%d %H:%M:%S}]'.format(datetime.datetime.now())
 
                 try:
                     print >> log, timestamp + ' ' + 'Adding torrent: ' + file
-                    newTorrent = client.add_torrent(watch_dir + '/' + file, download_dir=download_dir)
+                    with open(watch_dir + '/' + file, "rb") as f:
+                        encoded = base64.b64encode(f.read())
+                    newTorrent = client.add_torrent(encoded, download_dir=download_dir)
                     time.sleep(1)
                     newTorrent.start()
                     os.remove(watch_dir + '/' + file)
@@ -59,7 +61,7 @@ def add(watch_dir, download_dir):
                 time.sleep(1)
 
 while True:
-    log = open('./log.txt', 'a')
+    log = open('/opt/logs/log.txt', 'a')
     timestamp = '[{:%Y-%m-%d %H:%M:%S}]'.format(datetime.datetime.now())
     print >> log, timestamp + ' ' + 'Searching directories.'
     add(watch_tv, download_dir_tv)
